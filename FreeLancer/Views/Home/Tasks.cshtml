@@ -1,0 +1,71 @@
+﻿
+@{
+    ViewBag.Title = "Tasks";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model IEnumerable<FreeLancer.Models.Task>
+    <style>
+        .footer-style1 {
+            margin-top: 400px !important
+        }
+    </style>
+<section class="breadcumb-section pt-0">
+    <div class="cta-service-v6 cta-banner mx-auto maxw1700 pt120 pb120 bdrs16 position-relative overflow-hidden d-flex align-items-center mx20-lg px30-lg">
+        <img class="left-top-img wow zoomIn" src="~/assets/images/vector-img%5Cleft-top.png" alt="">
+        <img class="right-bottom-img wow zoomIn" src="~/assets/images/vector-img%5Cright-bottom.png" alt="">
+        <img class="service-v1-vector d-none d-lg-block zi1" src="~/assets/images/about%5Cabout-11.png" alt="">
+        <img class="vector-v12 bounce-y d-none d-lg-block" src="~/assets/images/about%5Celement-12.png" alt="">
+        <div class="container">
+            <div class="row wow fadeInUp">
+                <div class="col-xl-7">
+                    <div class="position-relative">
+                        <h2 class="text-white">Jobs List</h2>
+                        <p class="text text-white">Active jobs are available in the advertisement here.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <div class="container">
+        <div class="body_content bgc-thm3">
+            <!-- Listings All Lists -->
+            <section class="pt30 pb90">
+                <div class="container">
+                    <div class="row">
+                        @foreach (var ts in Model)
+                        {
+                            <div class="col-md-6 col-xl-3">
+                                <div class="freelancer-style1 bdrs12 bdr1 hover-box-shadow">
+                                    <div class="d-flex align-items-center">
+                                        <div class="thumb w60 position-relative rounded-circle mr15">
+                                            <img class="rounded-circle mx-auto" src="~/assets/images/team%5Cclient-1.png" alt="">
+                                            <span class="online-badge2"></span>
+                                        </div>
+                                        <div>
+                                            <span class="mb-0 fz14 dark-color list-inline-item mb5-sm"><i class="flaticon-30-days fz12 me-1"></i>@ts.createdat</span>
+                                            <span class="mb-0 fz14 dark-color list-inline-item mb5-sm"><i class="flaticon-contract fz12 me-1"></i>@ts.User.firstname</span>
+                                        </div>
+                                    </div>
+                                    <div class="details mt-4">
+                                        <h5 class="title mb-3">@ts.title</h5>
+                                        <p class="text mt10 line-clamp2">@ts.description</p>
+                                        <div class="skill-tags d-flex align-items-center mb20">
+                                            <span class="tag">@ts.category</span>
+                                            <span class="tag mx10">@ts.type</span>
+                                        </div>
+                                        <h4><small class="text fz14 me-3">Cost:</small> $@ts.cost</h4>
+                                        <div class="d-grid mt15">
+                                            <a href="/Home/SingleTask/@ts.id" class="ud-btn btn-thm-border bdrs12 default-box-shadow1">Read More<i class="fal fa-arrow-right-long"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</body>

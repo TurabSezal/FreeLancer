@@ -1,0 +1,34 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="hero-home13 at-home17 overflow-hidden">
+    <div class="container">
+        <div class="row wow fadeInRight" data-wow-delay="300ms">
+            <div class="col-xl-6 mx-auto">
+                @using (Html.BeginForm("Login", "Security", FormMethod.Post))
+                {
+                    <div class="log-reg-form search-modal form-style1 bgc-white p50 p30-sm default-box-shadow1 bdrs12">
+                        <div class="mb30">
+                            <h4>We're glad to see you again!</h4>
+                            <p class="text">Don't have an account? <a href="/Security/Register" class="text-thm">Sign Up!</a></p>
+                        </div>
+                        <div class="mb20">
+                            <label class="form-label fw600 dark-color">Email Address</label>
+                            <input type="email" name="email" class="form-control" placeholder="alitfn58@gmail.com">
+                        </div>
+                        <div class="mb15">
+                            <label class="form-label fw600 dark-color">Password</label>
+                            <input type="password" name="password" class="form-control" placeholder="*******">
+                        </div>
+                        <div class="d-grid mb20">
+                            <button class="ud-btn btn-thm" type="submit">Log In <i class="fal fa-arrow-right-long"></i></button>
+                        </div>
+                    </div>
+                }
+                </div>
+        </div>
+    </div>
+</section>

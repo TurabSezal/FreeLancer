@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="dd0956862a8440599cb774336f2ebe9b" Name="Diagram1">
+        <EntityTypeShape EntityType="FreeLancerModel.Offered" Width="1.5" PointX="3" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FreeLancerModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FreeLancerModel.Task" Width="1.5" PointX="6" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FreeLancerModel.Task_Status" Width="1.5" PointX="8.25" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FreeLancerModel.User" Width="1.5" PointX="0.75" PointY="3.125" IsExpanded="true" />
+        <AssociationConnector Association="FreeLancerModel.FK_Offered_Task" ManuallyRouted="false" />
+        <AssociationConnector Association="FreeLancerModel.FK_Offered_User" ManuallyRouted="false" />
+        <AssociationConnector Association="FreeLancerModel.FK_Task_Status_Task" ManuallyRouted="false" />
+        <AssociationConnector Association="FreeLancerModel.FK_Task_Task_Status1" ManuallyRouted="false" />
+        <AssociationConnector Association="FreeLancerModel.FK_Task_User" ManuallyRouted="false" />
+        <AssociationConnector Association="FreeLancerModel.FK_Task_Status_User" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

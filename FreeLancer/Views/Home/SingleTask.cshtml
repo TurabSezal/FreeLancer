@@ -1,0 +1,119 @@
+﻿
+@{
+    ViewBag.Title = "SingleTask";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model FreeLancer.Models.Task
+<section class="breadcumb-section pt-0">
+    <div class="cta-service-v6 cta-banner mx-auto maxw1700 pt120 pb120 bdrs16 position-relative overflow-hidden d-flex align-items-center mx20-lg px30-lg">
+        <img class="left-top-img wow zoomIn" src="~/assets/images/vector-img%5Cleft-top.png" alt="">
+        <img class="right-bottom-img wow zoomIn" src="~/assets/images/vector-img%5Cright-bottom.png" alt="">
+        <img class="service-v1-vector d-none d-lg-block zi1" src="~/assets/images/about%5Cabout-11.png" alt="">
+        <img class="vector-v12 bounce-y d-none d-lg-block" src="~/assets/images/about%5Celement-12.png" alt="">
+        <div class="container">
+            <div class="row wow fadeInUp">
+                <div class="col-xl-7">
+                    <div class="position-relative">
+                        <h2 class="text-white">Projects Detail</h2>
+                        <p class="text text-white">You can view the details of a job from here.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="body_content bgc-thm3">
+    <!-- Breadcumb Sections -->
+    <section class="breadcumb-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4 col-lg-2">
+                    <div class="d-flex align-items-center justify-content-sm-end">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Details -->
+    <section class="pt0">
+        <div class="container">
+            <div class="row wrap">
+                <div class="col-lg-8">
+                    <div class="column">
+                        <div class="px30 bdr1 pt30 pb-0 mb30 bg-white bdrs12 wow fadeInUp default-box-shadow1">
+                            <div class="position-relative overflow-hidden d-flex align-items-center">
+                                <div class="row">
+                                    <div class="col-xl-12">
+                                        <div class="position-relative">
+                                            <h2>@Model.title</h2>
+                                            <div class="list-meta mt15">
+                                                <p class="mb-0 dark-color fz15 fw500 list-inline-item ml15 mb5-sm ml0-xs"><i class="flaticon-calendar text-thm2 vam fz20 me-2"></i> @Model.createdat</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr class="opacity-100 mt20">
+                            <div class="row mt30">
+                                <div class="col-sm-6 col-xl-4">
+                                    <div class="iconbox-style1 contact-style d-flex align-items-start mb30">
+                                        <div class="icon flex-shrink-0"><span class="flaticon-notification-1"></span></div>
+                                        <div class="details">
+                                            <h5 class="title">Project Category</h5>
+                                            <p class="mb-0 text">@Model.category</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-xl-4">
+                                    <div class="iconbox-style1 contact-style d-flex align-items-start mb30">
+                                        <div class="icon flex-shrink-0"><span class="flaticon-dollar"></span></div>
+                                        <div class="details">
+                                            <h5 class="title">Project type</h5>
+                                            <p class="mb-0 text">@Model.type</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="service-about">
+                            <div class="p30 bdr1 mb30 bg-white bdrs12 wow fadeInUp default-box-shadow1">
+                                <h4>Description</h4>
+                                <p class="text mb30">@Model.description</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="column">
+                        <div class="blog-sidebar ms-lg-auto">
+                            <div class="price-widget pt25 bdrs8">
+                                <h3 class="widget-title">$@Model.cost</h3>
+                                <div class="d-grid">
+                                    <a href="/Home/AddOffered/@ViewBag.ID" class="ud-btn btn-thm">Take a Job<i class="fal fa-arrow-right-long"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="freelancer-style1 service-single mb-0 bdrs8">
+                    <h4>About Buyer</h4>
+                    <div class="wrapper d-flex align-items-center mt20">
+                        <div class="thumb position-relative mb25">
+                            <img class="rounded-circle mx-auto" src="~/assets/images/team/client-1.png" alt="">
+                        </div>
+                        <div class="ml20">
+                            <h5 class="title mb-1">@ViewBag.client.firstname</h5>
+                        </div>
+                    </div>
+                    <hr class="opacity-100">
+                    <div class="details">
+                        <div class="fl-meta d-flex align-items-center justify-content-between">
+                            <a class="meta fw500 text-start">Location<br><span class="fz14 fw400">@ViewBag.client.email</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

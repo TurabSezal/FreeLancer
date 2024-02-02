@@ -1,0 +1,92 @@
+﻿
+@{
+    ViewBag.Title = "OfferedList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model IEnumerable<FreeLancer.Models.Offered>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.min.css">
+<div class="body_content">
+    <!-- Breadcumb Sections -->
+    <section class="breadcumb-section pt-0">
+        <div class="cta-service-v1 cta-banner mx-auto maxw1700 pt120 pb120 bdrs16 position-relative overflow-hidden d-flex align-items-center mx20-lg px30-lg px10-xs">
+            <img class="service-v1-vector bounce-y d-none d-lg-block" src="~/assets/images/vector-img/vector-service-v1.png" alt="">
+            <div class="container">
+                <div class="row wow fadeInUp">
+                    <div class="col-xl-7">
+                        <div class="position-relative">
+                            <h2>Offered List</h2>
+                            <p class="text">All the Lorem Ipsum generators on the Internet tend to repeat.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Listings All Lists -->
+    <section class="pt30 pb90">
+        <div class="container">
+            <div class="row">
+                @foreach (var of in Model)
+                {
+                    <div class="col-md-6 col-lg-4 col-xl-3">
+                        <div class="freelancer-style1 bdrs12 bdr1 hover-box-shadow">
+                            <div class="d-flex align-items-center">
+                                <div class="thumb w90 position-relative rounded-circle" style="width:auto;">
+                                    <h4 class="title mb-50-sm" style="margin-bottom:12px">Name :<span style="color: #1f9d00"> @of.User.firstname @of.User.lastname</span></h4>
+                                    <h4 class="title mb-1">Email :<span style="color: #1f9d00"> @of.User.email</span></h4>
+                                </div>
+                            </div>
+                            <div class="details">
+                                <div class="review mt20 mb5">
+                                    <p class="list-inline-item"><i class="flaticon-30-days fz16 dark-color pr10"></i><span class="dark-color fw500">@of.offeredDuration.ToString("dd.MM.yyyy")</span></p>
+                                    <p class="list-inline-item"><i class="flaticon-income fz16 dark-color pr10"></i><span class="dark-color fw500">$@of.offeredCost</span></p>
+                                </div>
+                                <div class="d-grid">
+                                    <a id="task_form" href="/Home/TakeJob/@of.id" class="ud-btn btn-thm-border bdrs12 hover-default-box-shadow1">Give The Job<i class="fal fa-arrow-right-long"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    $(document).ready(function () {
+        $("#task_form").submit(function (e) {
+            e.preventDefault();
+
+            var form = $(this);
+            var url = form.attr('action');
+            var type = form.attr('method');
+            var data = form.serialize();
+
+            $.ajax({
+                type: type,
+                url: url,
+                data: data,
+                success: function (response) {
+                    if (response.success) {
+                        Swal.fire({
+                            title: "Success!",
+                            text: response.message,
+                            icon: "success",
+                            willClose: function () {
+                                window.location.href = '/Home/Index';
+                            }
+                        });
+                    } else {
+                        Swal.fire({
+                            title: "Something went wrong!",
+                            text: response.message,
+                            icon: "error"
+                        });
+                    }
+                }
+            });
+        });
+    });
+</script>

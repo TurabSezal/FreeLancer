@@ -1,0 +1,165 @@
+﻿
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="bidding, fiverr, freelance marketplace, freelancers, freelancing, gigs, hiring, job board, job portal, job posting, jobs marketplace, peopleperhour, proposals, sell services, upwork">
+    <meta name="description" content="BYD - Freelance">
+    <meta name="CreativeLayers" content="ATFN">
+    <!-- css file -->
+    <link rel="stylesheet" href="~/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/assets/css/jquery-ui.min.css">
+    <link rel="stylesheet" href="~/assets/css/ace-responsive-menu.css">
+    <link rel="stylesheet" href="~/assets/css/menu.css">
+    <link rel="stylesheet" href="~/assets/css/fontawesome.css">
+    <link rel="stylesheet" href="~/assets/css/flaticon.css">
+    <link rel="stylesheet" href="~/assets/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="~/assets/css/animate.css">
+    <link rel="stylesheet" href="~/assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="~/assets/css/slider.css">
+    <link rel="stylesheet" href="~/assets/css/style.css">
+    <link rel="stylesheet" href="~/assets/css/ud-custom-spacing.css">
+    <!-- Responsive stylesheet -->
+    <link rel="stylesheet" href="~/assets/css/responsive.css">
+    <!-- Title -->
+    <title>BYD - Freelance</title>
+    <!-- Favicon -->
+    <link href="~/assets/images/favicon.ico" sizes="128x128" rel="shortcut icon" type="image/x-icon" />
+    <link href="~/assets/images/favicon.ico" sizes="128x128" rel="shortcut icon" />
+    <!-- Apple Touch Icon -->
+    <link href="~/assets/images/apple-touch-icon-60x60.png" />
+    <link href="~/assets/images/apple-touch-icon-60x60.png" sizes="60x60" rel="apple-touch-icon">
+    <link href="~/assets/images/apple-touch-icon-72x72.png" sizes="72x72" rel="apple-touch-icon">
+    <link href="~/assets/images/apple-touch-icon-114x114.png" sizes="114x114" rel="apple-touch-icon">
+    <link href="~/assets/images/apple-touch-icon-180x180.png" sizes="180x180" rel="apple-touch-icon">
+</head>
+<body>
+    <div class="wrapper ovh">
+        <div class="preloader"></div>
+        <!-- Main Header Nav -->
+        <header class="header-nav nav-homepage-style at-home17 stricky main-menu border-0">
+            <!-- Ace Responsive Menu -->
+            <nav class="posr">
+                <div class="container posr">
+                    <div class="row align-items-center justify-content-between">
+                        <div class="col-auto px-0 px-xl-3">
+                            <div class="d-flex align-items-center justify-content-between">
+                                <div class="logos">
+                                    <a class="header-logo logo1" href="/Home/Index">
+                                    </a>
+                                    <a class="header-logo logo2" href="/Home/Index"><img style="width:80px" src="~/assets/images/output-onlinepngtools.png" alt="Header Logo"></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-auto pe-0 pe-xl-3">
+                            <div class="d-flex align-items-center">
+                                <!-- Responsive Menu Structure-->
+
+                                <ul id="respMenu" class="ace-responsive-menu" data-menu-style="horizontal">
+                                    <li class="visible_list">
+                                        <a class="list-item" href="/Home/Index"><span class="title">Home</span></a>
+                                    </li>
+                                    <li class="visible_list">
+                                        <a class="list-item" href="/Home/tasks"><span class="title">Browse Jobs</span></a>
+                                    </li>
+                                </ul>
+                                @if (User.Identity.IsAuthenticated)
+                                {
+                                    <a class="login-info ml30 mr10 home18-sign-btn px30 py-1 bdrs12" href="/Security/Logout">Çıkış Yap</a>
+                                    <a class="ud-btn btn-white add-joining home17-join-btn bdrs12" href="/Home/MyProfile">Hesabım</a>
+
+                                    <a class="ud-btn btn-white add-joining home17-join-btn bdrs12" style="margin-left:5px">Balance : @ViewBag.User.balance</a>
+                                    <span style="background-color:white"></span>
+                                }
+                                else
+                                {
+                                    <a class="login-info ml30 mr10 home18-sign-btn px30 py-1 bdrs12"  href="/Security/Login">Sign in</a>
+                                    <a class="ud-btn btn-white add-joining home17-join-btn bdrs12" href="/Security/Register">Join</a>
+                                }
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <div class="hiddenbar-body-ovelay"></div>
+        <!-- Mobile Nav  -->
+        <div id="page" class="mobilie_header_nav stylehome1">
+            <div class="mobile-menu">
+                <div class="header bdrb1">
+                    <div class="menu_and_widgets">
+                        <div class="mobile_menu_bar d-flex justify-content-between align-items-center">
+                            <a class="mobile_logo" href="#"><img style="width:80px;" src="~/assets/images/output-onlinepngtools.png" alt=""></a>
+                            <div class="right-side text-end">
+                                <a class="" href="/Home/Index">HOME</a>
+                                <a class="menubar ml30" href="#menu"><img src="~/assets/images/mobile-dark-nav-icon.svg" alt=""></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="posr"><div class="mobile_menu_close_btn"><span class="far fa-times"></span></div></div>
+                </div>
+            </div>
+            <!-- /.mobile-menu -->
+            <nav id="menu" class="">
+                <ul>
+                    <li>
+                        <a href="/Home/Index">Home</a>
+                    </li>
+                    <li>
+                        <a href="/Home/tasks">Browse Jobs</a>
+                    </li>
+
+                    <!-- Only for Mobile View -->
+                </ul>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <a class="login-info ml30 mr10 home18-sign-btn px30 py-1 bdrs12" href="/Security/Logout">Çıkış Yap</a>
+                    <a class="ud-btn btn-white add-joining home17-join-btn bdrs12" href="/Home/MyProfile">Hesabım</a>
+
+                    <a class="ud-btn btn-white add-joining home17-join-btn bdrs12" style="margin-left:5px">Balance : @ViewBag.User.balance</a>
+                    <span style="background-color:white"></span>
+                }
+                else
+                {
+                    <a class="ud-btn btn-white  bdrs12" href="/Security/Login" style="border: 2px solid #dbdbdb; margin-bottom: 4px ">Sign in</a>
+                    <a class="ud-btn btn-white home17-join-btn bdrs12" href="/Security/Register">Join</a>
+                }
+            </nav>
+        </div>
+        <div class="body_content">
+            @RenderBody()
+            <section class="footer-style1 pt25 pb-0">
+                <div class="container white-bdrt1 py-4">
+                    <div class="row align-items-center">
+                        <div class="col-md-6">
+                            <div class="text-center text-lg-start">
+                                <p class="copyright-text mb-2 mb-md-0 text-white-light ff-heading">© HTS. 2023 All rights reserved.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <a class="scrollToHome" href="#"><i class="fas fa-angle-up"></i></a>
+        </div>
+    </div>
+    <!-- Wrapper End -->
+    <script src="~/assets/js/"></script>
+    <script src="~/assets/js/jquery-3.6.4.min.js"></script>
+    <script src="~/assets/js/jquery-migrate-3.0.0.min.js"></script>
+    <script src="~/assets/js/popper.min.js"></script>
+    <script src="~/assets/js/bootstrap.min.js"></script>
+    <script src="~/assets/js/bootstrap-select.min.js"></script>
+    <script src="~/assets/js/jquery.mmenu.all.js"></script>
+    <script src="~/assets/js/ace-responsive-menu.js"></script>
+    <script src="~/assets/js/jquery-scrolltofixed-min.js"></script>
+    <script src="~/assets/js/wow.min.js"></script>
+    <script src="~/assets/js/owl.js"></script>
+    <script src="~/assets/js/jquery.counterup.js"></script>
+    <script src="~/assets/js/isotop.js"></script>
+    <!-- Custom script for all pages -->
+    <script src="~/assets/js/script.js"></script>
+</body>
+</html>

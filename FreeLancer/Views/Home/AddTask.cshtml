@@ -1,0 +1,154 @@
+﻿
+@{
+    ViewBag.Title = "AddTask";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.min.css">
+<div class="dashboard__main pl0-md">
+    <div class="col-lg-9">
+        <div class="dashboard_title_area">
+            <h2>Creat Project</h2>
+            <p class="text">Lorem ipsum dolor sit amet, consectetur.</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="ps-widget bgc-white bdrs4 p30 mb30 overflow-hidden position-relative">
+                <div class="bdrb1 pb15 mb25">
+                    <h5 class="list-title">Basic Information</h5>
+                </div>
+                <div class="col-xl-8">
+                    <form class="form-style1" method="post" action="/Home/AddTask" id="task_form">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="mb20">
+                                    <label class="heading-color ff-heading fw500 mb10">Project Title</label>
+                                    <input type="text" name="title" class="form-control" placeholder="i will" required>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="mb20">
+                                    <div class="form-style1">
+                                        <label class="heading-color ff-heading fw500 mb10">Category</label>
+                                        <div class="bootselect-multiselect">
+                                            <select class="selectpicker" name="category" required>
+                                                <option>Select</option>
+                                                <option value="Software">Software</option>
+                                                <option value="Graphics & Design">Graphics & Design</option>
+                                                <option value="Digital Marketing">Digital Marketing</option>
+                                                <option value="Writing & Translation">Writing & Translation</option>
+                                                <option value="Video & Animation">Video & Animation</option>
+                                                <option value="Music & Audio">Music & Audio</option>
+                                                <option value="Programming & Tech">Programming & Tech</option>
+                                                <option value="Business">Business</option>
+                                                <option value="Lifestyle">Lifestyle</option>
+                                                <option value="Trending">Trending</option>
+                                                <option value="other">Other</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="mb20">
+                                    <div class="form-style1">
+                                        <label class="heading-color ff-heading fw500 mb10">Type</label>
+                                        <div class="bootselect-multiselect">
+                                            <select class="selectpicker" name="type" required>
+                                                <option>Select</option>
+                                                <option value="Project Based">Project Based</option>
+                                                <option value="Part Time">Part Time</option>
+                                                <option value="Other">Other</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="mb20">
+                                    <label class="heading-color ff-heading fw500 mb10">Cost</label>
+                                    <input type="number" name="cost" class="form-control" placeholder="$" required>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="mb20">
+                                    <label class="heading-color ff-heading fw500 mb10">Duration</label>
+                                    <input type="datetime" id="durationInput" value="@DateTime.Now.ToString("dd.MM.yyyy")" name="duration" class="form-control" placeholder="DD.MM.YYYY" required>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="mb10">
+                                    <label class="heading-color ff-heading fw500 mb10">Project Detail</label>
+                                    <textarea cols="30" rows="6" placeholder="Description" name="description" required></textarea>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="text-start">
+                                    <button type="submit" class="ud-btn btn-thm">Save<i class="fal fa-arrow-right-long"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    $(document).ready(function () {
+        $("#task_form").submit(function (e) {
+            e.preventDefault();
+
+            var form = $(this);
+            var url = form.attr('action');
+            var type = form.attr('method');
+            var data = form.serialize();
+
+            $.ajax({
+                type: type,
+                url: url,
+                data: data,
+                success: function (response) {
+                    if (response.success) {
+                        Swal.fire({
+                            title: "Success!",
+                            text: response.message,
+                            icon: "success",
+                            willClose: function () {
+                                window.location.href = '/Home/MyProfile';
+                            }
+                        });
+                    } else {
+                        Swal.fire({
+                            title: "Something went wrong!",
+                            text: response.message,
+                            icon: "error"
+                        });
+                    }
+                }
+            });
+        });
+    });
+</script>
+<script>
+    const durationInput = document.getElementById('durationInput');
+
+    const expectedFormat = /^\d{2}\.\d{2}\.\d{4}$/;
+
+    durationInput.addEventListener('blur', validateDuration);
+
+    function validateDuration() {
+        const enteredDate = durationInput.value;
+
+        if (enteredDate.trim() !== '' && !expectedFormat.test(enteredDate)) {
+            Swal.fire({
+                title: "Something went wrong!",
+                text: "Please enter the date in the displayed format. dd.MM.YYYY",
+                icon: "error"
+            });
+             durationInput.value = '';
+        }
+    }
+</script>

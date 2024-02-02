@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+    <section class="hero-home13 at-home17 overflow-hidden">
+        <div class="container">
+            <div class="row wow fadeInRight" data-wow-delay="300ms">
+                <div class="col-xl-6 mx-auto">
+                    <form action="@Url.Action("Save", "Security")" method="post">
+                        @Html.AntiForgeryToken()
+                        <div class="log-reg-form search-modal form-style1 bgc-white p50 p30-sm default-box-shadow1 bdrs12">
+                            <div class="mb30">
+                                <h4>Let's create your account!</h4>
+                                <p class="text mt20">Already have an account? <a href="/Security/Login" class="text-thm">Log In!</a></p>
+                            </div>
+                            <div class="mb25">
+                                <label class="form-label fw500 dark-color">First Name</label>
+                                <input type="text" name="firstname" class="form-control" placeholder="ali">
+                            </div>
+                            <div class="mb25">
+                                <label class="form-label fw500 dark-color">Last Name</label>
+                                <input type="text" name="lastname" class="form-control" placeholder="alitf">
+                            </div>
+                            <div class="mb25">
+                                <label class="form-label fw500 dark-color">Email</label>
+                                <input type="email" name="email" class="form-control" placeholder="alitfn58@gmail.com">
+                            </div>
+                            <div class="mb15">
+                                <label class="form-label fw500 dark-color">Password</label>
+                                <input type="password" name="password" class="form-control" placeholder="*******">
+                            </div>
+                            <div class="mb15">
+                                <label class="form-label fw500 dark-color">Kullanım Türü</label>
+                                <select class="selectpicker" name="type">
+                                    <option value="0">
+                                        Çalışan
+                                    </option>
+                                    <option value="1">İş Veren</option>
+                                </select>
+                            </div>
+                            <div class="d-grid mb20">
+                                <button class="ud-btn btn-thm default-box-shadow2" type="submit">Creat Account <i class="fal fa-arrow-right-long"></i></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>

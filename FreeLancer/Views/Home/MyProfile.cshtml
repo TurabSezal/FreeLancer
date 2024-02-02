@@ -1,0 +1,213 @@
+﻿
+@{
+    ViewBag.Title = "Profile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model FreeLancer.Models.User
+    <style>
+        header.nav-homepage-style .ace-responsive-menu .visible_list a.list-item {
+            color:black;
+            font-family: var(--title-font-family);
+            font-weight:500;
+        }
+        header.nav-homepage-style .sidemenu-btn, header.nav-homepage-style .login-info {
+            color: black;
+            border:0.5px solid #000000;
+        }
+    </style>
+    <div class="dashboard__main pl0-md">
+        <div class="col-lg-9" >
+            <div class="dashboard_title_area">
+                <h2>My Profile</h2>
+                <p class="text">This is your profile. You can manage your affairs from here.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="ps-widget bgc-white bdrs4 p30 mb30 overflow-hidden position-relative">
+                    <div class="bdrb1 pb15 mb25">
+                        <h5 class="list-title">Profile Details</h5>
+                    </div>
+                    <div class="col-lg-7">
+                        <form class="form-style1">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="mb20">
+                                        <label class="heading-color ff-heading fw500 mb10">First Name</label>
+                                        <h3>@Model.firstname</h3>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="mb20">
+                                        <label class="heading-color ff-heading fw500 mb10">Last Name</label>
+                                        <h3>@Model.lastname</h3>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="mb20">
+                                        <label class="heading-color ff-heading fw500 mb10">Email Address</label>
+                                        <h3>@Model.email</h3>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="mb20">
+                                        <label class="heading-color ff-heading fw500 mb10">User Type</label>
+                                        @if (Model.type == 0)
+                                        {
+                                            <h3>Worker</h3>
+                                        }
+                                        else
+                                        {
+                                            <h3>Client</h3>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="ps-widget bgc-white bdrs4 p30 mb30 overflow-hidden position-relative">
+                    <div class="bdrb1 pb15 mb30 d-sm-flex justify-content-between">
+                        <h5 class="list-title">Job</h5>
+                        @if (Model.type == 0)
+                        {
+                            <a href="/Home/Tasks" class="add-more-btn text-thm"><i class="icon far fa-plus mr10"></i>Add Tasks</a>
+                        }
+                        else
+                        {
+                            <a href="/Home/AddTask" class="add-more-btn text-thm"><i class="icon far fa-plus mr10"></i>Add Tasks</a>
+                        }
+                    </div>
+                    <div class="position-relative">
+                        <div class="educational-quality ps-0">
+                            @if (Model.type == 0)
+                            {
+
+
+                                foreach (var item in ViewBag.Task)
+                                {
+                                    <div class="wrapper mb40 position-relative">
+                                        <div class="del-edit">
+                                        </div>
+                                        @if (item.status == 1)
+                                        {
+                                            <span class="tag">
+                                                In Progress
+                                            </span>
+
+                                        }
+                                        @if (item.status == 2)
+                                        {
+                                            <span class="tag">
+                                                Waiting
+                                            </span>
+                                        }
+                                        @if (item.status == 3)
+                                        {
+                                            <span class="tag">
+                                                Completed
+                                            </span>
+                                        }
+                                        <span class="tag">@item.Task.createdat.ToString("dd.MM.yyyy")</span>
+                                        <span class="tag">Type :@item.Task.type</span>
+                                        <span class="tag">Category :@item.Task.category</span>
+                                        <h5 class="mt15">@item.Task.title</h5>
+                                        <p>@item.Task.description<br class="d-none d-lg-block"></p>
+                                        <h6 class="text-thm6">Client Name :@item.Task.User.firstname</h6>
+                                        <h6 class="text-thm6">Cost :@item.Task.cost</h6>
+                                        <h6 class="text-thm6">Duration :@item.Task.duration.ToString("dd.MM.yyyy")</h6>
+
+                                        @if (item.status == 1)
+                                        {
+                                            <div class="del-edit">
+                                                <div class="d-flex">
+                                                    <a href="/Home/UpdateTask/@item.Task.id" style="background-color: #97FCC4;" class="icon me-5" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Complete" aria-label="Complete"><span class="flaticon-success"></span></a>
+                                                </div>
+                                            </div>
+                                        }
+                                    </div>
+                                }
+                            }
+                            @if (Model.type == 1)
+                            {
+                                foreach (var item in ViewBag.task)
+                                {
+                                    <div class="wrapper mb40 position-relative">
+                                        <div class="del-edit">
+                                        </div>
+                                        @if (item.Task_Status.Count != 0)
+                                        {
+                                            foreach (var status in item.Task_Status)
+                                            {
+
+
+                                                if (status.status == 1)
+                                                {
+                                                    <span class="tag">
+                                                        User Name : @status.User.firstname @status.User.lastname
+                                                    </span>
+                                                    <span class="tag">
+                                                        In Progress
+                                                    </span>
+                                                }
+                                                if (status.status == 2)
+                                                {
+                                                    <span class="tag">
+                                                        User Name : @status.User.firstname @status.User.lastname
+                                                    </span>
+                                                    <span class="tag">
+                                                        Waiting
+                                                    </span>
+                                                }
+                                                if (status.status == 3)
+                                                {
+                                                    <span class="tag">
+                                                        User Name : @status.User.firstname @status.User.lastname
+                                                    </span>
+                                                    <span class="tag">
+                                                        Completed
+                                                    </span>
+                                                }
+                                            }
+                                        }
+                                        <span class="tag">@item.createdat.ToString("dd.MM.yyyy")</span>
+                                        <h5 class="mt15">@item.title</h5>
+                                        <p>@item.description<br class="d-none d-lg-block"></p>
+                                        <h6 class="text-thm">Type :@item.type</h6>
+                                        <h6 class="text-thm">Category :@item.category</h6>
+                                        <h6 class="text-thm">Cost :@item.cost</h6>
+                                        @if (item.Task_Status.Count != 0)
+                                        {
+                                            foreach (var status in item.Task_Status)
+                                            {
+                                                if (status.status == 2)
+                                                {
+                                                    <div class="del-edit">
+                                                        <div class="d-flex">
+                                                            <a href="/Home/UpdateTask/@status.Task.id" class="icon me-5" style="background-color: #97FCC4;" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Complete" aria-label="Complete"><span class="flaticon-success"></span></a>
+                                                        </div>
+                                                    </div>
+                                                }
+                                            }
+                                        }
+                                        @if (item.Offered.Count != 0)
+                                        {
+                                            foreach (var offered in item.Offered)
+                                            {
+                                                <div class="del-edit">
+                                                    <div class="d-flex">
+                                                        <a href="/Home/OfferedList/@offered.Task.id" class="icon me-5"  data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="List" aria-label="List"><span class="flaticon-document"></span></a>
+                                                    </div>
+                                                </div>
+                                            }
+                                        }
+                                    </div>
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
